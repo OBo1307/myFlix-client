@@ -6,13 +6,28 @@ import { MovieCard } from "../movie-card/movie-card";
 // Import statement to indicate that yo need to bundle `../movie-view/movie-view.jsx`
 import { MovieView } from "../movie-view/movie-view";
 
-export const MainView = () => {
-  const [movies, setMovies] = useState([]);
+// Import statement to indicate that yo need to bundle `../movie-view/movie-view.jsx`
+import { LoginView } from "../login-view/login-view";
 
+// Import statement to indicate that yo need to bundle `../movie-view/movie-view.jsx`
+import { SignupView } from "../signup-view/signup-view";
+
+export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(storedUser?  storedUser : null);
+  const [token, setToken] = useState(storedToken? storedToken: null);
 
   useEffect(() => {
-    fetch("https://boflixapp.herokuapp.com/movies")
+    if (!token) {
+      return;
+    }
+
+    fetch("https://boflixapp.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((doc) => {
@@ -27,20 +42,69 @@ export const MainView = () => {
         })
         setMovies(moviesFromApi);
       });
-  }, []);
+  }, [token]);
+
+  if (!user) {
+    return (
+      <>
+        <LoginView onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }} />
+        or
+        <SignupView />
+      </>
+    );
+  }
 
   if (selectedMovie) {
     return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+      <>
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <MovieView 
+          movie={selectedMovie} 
+          onBackClick={() => setSelectedMovie(null)} 
+        />
+      </>
     );
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return (
+      <>
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <div>The list is empty!</div>
+      </>
+    );
   }
 
   return (
     <div>
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
       {movies.map((movie) => (
         <MovieCard
           key={movie._id}
