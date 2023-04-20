@@ -1,9 +1,11 @@
+import Button from "react-bootstrap/Button";
+
 export const MovieView = ({ movie, onBackClick }) => {
   let altDescription = `Poster for ${movie.title}`
   return (
     <div>
       <div>
-        <img src={movie.image} alt={altDescription} />
+        <img className="w-100" src={movie.image} alt={altDescription} />
       </div>
       <div>
         <span>Title: </span>
@@ -21,7 +23,7 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>Genre: </span>
         <span>{movie.genre}</span>
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <Button variant="primary" onClick={onBackClick}>Back</Button>
     </div>
   );
 };
