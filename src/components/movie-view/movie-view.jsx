@@ -1,7 +1,72 @@
+import { PropTypes } from "prop-types";
+import { useParams } from "react-router";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies, user, token, updateUser }) => {
+  const { movieId } = useParams();
+  
+  const movie = movies.find((m) => m.id === movieId);
+
+const [isFavorite, setIsFavorite] = useState(user.favoriteMovies && user.favoriteMovies.includes(m._id));
+
+useEffect(() => {
+  setIsFavorite(user.favoriteMovies && user.favoriteMovies.includes(m._id));
+}, [movieId]);
+
+const addFavorite = () => {
+  fetch(`https://boflixapp.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` }
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.json();
+      } else {
+          alert("Failed");
+          return false;
+      }
+  })
+  .then(user => {
+      if (user) {
+          alert("Successfully added to favorites");
+          setIsFavorite(true);
+          updateUser(user);
+      }
+  })
+  .catch(e => {
+      alert(e);
+  });
+}
+
+const removeFavorite = () => {
+  fetch(`https://boflixapp.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` }
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.json();
+      } else {
+          alert("Failed");
+          return false;
+      }
+  })
+  .then(user => {
+      if (user) {
+          alert("Successfully deleted from favorites");
+          setIsFavorite(false);
+          updateUser(user);
+      }
+  })
+  .catch(e => {
+      alert(e);
+  });
+}
+
   let altDescription = `Poster for ${movie.title}`
+
   return (
     <div>
       <div>
@@ -23,7 +88,13 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>Genre: </span>
         <span>{movie.genre}</span>
       </div>
-      <Button variant="primary" onClick={onBackClick}>Back</Button>
+      <Link to={`/`}>
+        <button className="back-button">Back</button>
+      </Link>
+      {isFavorite
+        ? <Button variant="danger" className="ms-2" onClick={removeFavorite}>Remove from favorites</Button>
+        : <Button variant="success" className="ms-2" onClick={addFavorite}>Add to favorites</Button>
+      }                   
     </div>
   );
 };
