@@ -14,8 +14,8 @@ export const ProfileView = ({
 	const [email, setEmail] = useState('');
 	const [birthdate, setBirthdate] = useState('');
 
-	const favoriteMovies = user.favoriteMovies
-		? movies.filter((m) => user.favoriteMovies.includes(m._id))
+	const favoriteMovies = user.FavoriteMovies
+		? movies.filter((m) => user.FavoriteMovies.includes(m.id))
 		: [];
 
 	const handleSubmit = (event) => {
@@ -149,11 +149,11 @@ export const ProfileView = ({
 				</Card>
 			</Col>
 			<h2>Favorite Movies:</h2>
-				{favoriteMovies.map((movie) => (
-					<Col xs={12} sm={6} md={4} lg={3} key={movie._id}>
-						<MovieCard movie={movie} />
-					</Col>
-				))}
+			{favoriteMovies.map((movie) => (
+				<Col xs={12} sm={6} md={4} lg={3} key={movie._id}>
+					<MovieCard movie={movie} />
+				</Col>
+			))}
 		</>
 	);
 };
