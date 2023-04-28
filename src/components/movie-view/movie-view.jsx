@@ -76,38 +76,43 @@ export const MovieView = ({ movies, user, token, updateUser }) => {
 	let altDescription = `Poster for ${movie.title}`;
 
 	return (
-		<div>
-			<div>
-				<img className='w-100' src={movie.image} alt={altDescription} />
+		<div className='container'>
+			<div className='row'>
+				<div className='col-md-4'>
+					<img
+						className='w-100 mb-1 mt-4'
+						src={movie.image}
+						alt={altDescription}
+					/>
+					<div className='d-flex justify-content-between'>
+						<Button
+							className='w-50 me-2'
+							variant={isFavorite ? 'danger' : 'success'}
+							onClick={isFavorite ? removeFavorite : addFavorite}
+						>
+							{isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+						</Button>
+						<Link to={`/`}>
+							<Button className='ms-2 back-button' variant='secondary'>
+								Back
+							</Button>
+						</Link>
+					</div>
+				</div>
+				<div className='col-md-8 mt-4'>
+					<h2 className='text-center mb-4'>{movie.title}</h2>
+					<span className='font-weight-bold'>Description: </span>
+					<p className='text-justify'>{movie.description}</p>
+					<div>
+						<span className='font-weight-bold'>Director: </span>
+						<p>{movie.director}</p>
+					</div>
+					<div>
+						<span className='font-weight-bold'>Genre: </span>
+						<p>{movie.genre}</p>
+					</div>
+				</div>
 			</div>
-			<div>
-				<span>Title: </span>
-				<span>{movie.title}</span>
-			</div>
-			<div>
-				<span>Description: </span>
-				<span>{movie.description}</span>
-			</div>
-			<div>
-				<span>Director: </span>
-				<span>{movie.director}</span>
-			</div>
-			<div>
-				<span>Genre: </span>
-				<span>{movie.genre}</span>
-			</div>
-			<Link to={`/`}>
-				<button className='back-button'>Back</button>
-			</Link>
-			{isFavorite ? (
-				<Button variant='danger' className='ms-2' onClick={removeFavorite}>
-					Remove from favorites
-				</Button>
-			) : (
-				<Button variant='success' className='ms-2' onClick={addFavorite}>
-					Add to favorites
-				</Button>
-			)}
 		</div>
 	);
 };
