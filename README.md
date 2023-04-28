@@ -1,4 +1,4 @@
-# MyFlix movie app
+# myFlixApp (Project for CareerFoundry)
 
 #### Deployed:
 
