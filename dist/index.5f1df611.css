@@ -1,5 +1,8 @@
 @import "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,500;1,400&display=swap";
-@import "https://fonts.googleapis.com/css2?family=Sigmar&display=swap";
+div {
+  margin-top: 30px;
+}
+
 .card {
   background-color: #fff;
   border: 1px solid #00000020;
@@ -25,60 +28,12 @@
 
 .text-warning {
   font-family: Ubuntu, sans-serif;
-  font-size: 1.6rem !important;
-}
-
-.text-danger {
-  font-family: Ubuntu, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.7rem !important;
 }
 
 .card {
   font-family: Ubuntu, sans-serif;
   font-size: 20px !important;
-}
-
-.text-center {
-  margin-top: 20px;
-  margin-bottom: 0;
-  font-family: Ubuntu, sans-serif;
-  font-size: 35px !important;
-}
-
-.text-justify {
-  text-align: justify !important;
-}
-
-.font-weight-bold {
-  margin-top: 20px;
-  margin-bottom: 0;
-  font-family: Ubuntu, sans-serif;
-  font-size: 15px !important;
-  font-weight: bold !important;
-}
-
-.search-bar {
-  margin-top: 30px !important;
-}
-
-form {
-  margin-top: 20px;
-  font-family: Ubuntu, sans-serif;
-}
-
-.myflixtext {
-  margin-bottom: 0;
-  font-family: Sigmar, sans-serif;
-  font-size: 40px !important;
-}
-
-.fav-movie {
-  margin-left: 20px;
-  font-family: Ubuntu, sans-serif;
-}
-
-.btn {
-  margin-top: 10px !important;
 }
 
 :root {
@@ -12089,4 +12044,4 @@ textarea.form-control-lg {
   }
 }
 
-/*# sourceMappingURL=index.ce1d6491.css.map */
+/*# sourceMappingURL=index.5f1df611.css.map */

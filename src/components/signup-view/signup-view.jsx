@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import myFlixLogo from '../../img/popcorn.png';
 
 export const SignupView = () => {
 	const [username, setUsername] = useState('');
@@ -36,6 +37,12 @@ export const SignupView = () => {
 
 	return (
 		<Form onSubmit={handleSubmit}>
+			<div>
+				<h2 className='d-flex justify-content-center mt-5'>Welcome to</h2>
+				<span className='text-warning d-flex justify-content-center myflixtext'>
+					MyFlix
+				</span>
+			</div>
 			<Form.Group controlId='signUpFormUsername'>
 				<Form.Label>Username:</Form.Label>
 				<Form.Control

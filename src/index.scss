@@ -1,3 +1,88 @@
 $primary: #2b4b6f;
 
+.card {
+  margin-top: 50 !important;
+  margin-bottom: 50 !important;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+};
+
+.mt-2 {
+  text-align: center;
+};
+
+.navbar {
+  font-size: 1.37rem;
+  font-family: 'Ubuntu', sans-serif;
+};
+
+.navbar-collapse {
+  flex-grow: 0 !important;
+};
+
+.text-warning {
+  font-size: 1.6rem !important;
+  font-family: 'Ubuntu', sans-serif;
+};
+
+.text-danger {
+  font-size: 1.3rem;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.card {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px !important;
+};
+
+.text-center {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 35px !important;
+  margin-top: 20px;
+  margin-bottom: 0;
+};
+
+.text-justify {
+  text-align: justify !important;
+};
+
+.font-weight-bold {
+  font-weight: bold !important;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px !important;
+  margin-top: 20px;
+  margin-bottom: 0;;
+};
+
+.search-bar {
+  margin-top: 30px !important;
+};
+
+form {
+  margin-top: 20px;
+  font-family: 'Ubuntu', sans-serif;
+};
+
+.myflixtext {
+  font-family: 'Sigmar', sans-serif;
+  font-size: 40px !important;
+  margin-bottom: 0;
+};
+
+.fav-movie {
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 20px;
+}
+
+.btn {
+  margin-top: 10px !important;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,500;1,400&display=swap');
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss"
