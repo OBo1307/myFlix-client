@@ -30,7 +30,7 @@ export const SignupView = () => {
 				alert('Signup succesful');
 				window.location.replace('/login');
 			} else {
-				alert('Signup failed');
+				alert('We have this user already');
 			}
 		});
 	};
